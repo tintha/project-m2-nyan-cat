@@ -11,8 +11,8 @@ class Player {
 
     // The y position never changes, so we don't need to store it in a property. It represents the y position of the top of the
     // hamburger. The y position is the distance from the top margin of the browsing area.
-    const y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
-
+    const y = GAME_HEIGHT - PLAYER_HEIGHT - 10; // 436
+    
     // We create a DOM node. We will be updating the DOM node every time we move the player, so we store a reference to the
     // DOM node in a property.
     this.domElement = document.createElement('img');
@@ -30,7 +30,6 @@ class Player {
     if (this.x > 0) {
       this.x = this.x - PLAYER_WIDTH;
     }
-
     this.domElement.style.left = `${this.x}px`;
   }
 

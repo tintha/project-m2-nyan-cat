@@ -64,7 +64,6 @@ class Enemy {
     // the destroyed property to indicate that the enemy should no longer be in play
     if (this.y > GAME_HEIGHT) {
       this.root.removeChild(this.domElement);
-
       this.destroyed = true;
     }
   }

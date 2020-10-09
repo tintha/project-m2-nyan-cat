@@ -34,6 +34,39 @@ const nextEnemySpot = (enemies) => {
   return candidate;
 };
 
+// ******************************************************************BONUS
+
+
+const nextBonusSpot = (bonuses) => {
+  // enemySpots will refer to the number of spots available (can you calculate it?)
+  const bonusSpots = GAME_WIDTH / BONUS_WIDTH;
+
+  // To find out where to place an enemy, we first need to find out which are the spots available.
+  // We don't want to place two enemies in the same lane. To accomplish this, we first create an
+  // array with 5 elements (why 5?) and each element is false.
+  // We then use forEach to iterate through all the enemies.
+  // If you look at the constructor of the Enemy class, you can see that every instance will have a spot property.
+  // We can use this property to modify the spotsTaken array.
+  const spotsTaken = [false, false, false, false, false];
+  bonuses.forEach((bonus) => {
+    spotsTaken[bonusSpots.spot] = true;
+  });
+
+  // We are now in a position to find out position. We declare a variable candidate that is initially undefined.
+  // candidate represents a potential spot. The variable will be repeatedly assigned different numbers.
+  // We will randomly try different spots until we find out that is available
+  let candidate = undefined;
+  while (candidate === undefined || spotsTaken[candidate]) {
+    // candidate is assigned a random number between 0 and enemySpots (not including enemySpots). (what number is enemySpots?)
+    candidate = Math.floor(Math.random() * bonusSpots);
+  }
+
+  // When the while loop is finished, we are assured that we have a number that corresponds to a free spot, so we return it.
+  return candidate;
+};
+
+
+// ****************************************************************** END of BONUS code
 // addBackground contains all the logic to display the starry background of the game.
 // It is a variable that refers to a function.
 // The function takes one parameter
