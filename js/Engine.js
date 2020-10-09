@@ -56,11 +56,17 @@ class Engine {
     // We use filter to accomplish this.
     // Remember: this.enemies only contains instances of the Enemy class.
     this.enemies = this.enemies.filter((enemy) => {
+      if (enemy.destroyed) {
+        this.score.update(this.startingScore += 1);
+      }
       return !enemy.destroyed;     
     });
 
     //bonus
     this.bonuses = this.bonuses.filter((bonus) => {
+      if (bonus.wasEaten && bonus.destroyed) {
+        this.score.update(this.startingScore += 100);
+      }
       return !bonus.destroyed;     
     });
     // We need to perform the addition of enemies until we have enough enemies.    
@@ -70,7 +76,7 @@ class Engine {
       const spot = nextEnemySpot(this.enemies);    
       this.enemies.push(new Enemy(this.root, spot));
       // Add 100 pts to the score for every generated cats
-      this.score.update(this.startingScore += 10);
+      // this.score.update(this.startingScore += 10);
     }
 
 
@@ -82,11 +88,11 @@ class Engine {
       this.bonuses.push(new Bonus(this.root, spotB));
     }
 
+
     if (this.didPlayerEatBonus()) {
-      this.gameStatus.update("Bonus!");
+      this.gameStatus.update("+100");
       const showBonus = setTimeout((() => {
         this.gameStatus.update("");
-        this.score.update(this.startingScore += 100);
       }), 700);     
       
     }
@@ -98,7 +104,6 @@ class Engine {
       return;
     }
 
-    console.log(this.startingScore);
 
     // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
     setTimeout(this.gameLoop, 20);
@@ -115,14 +120,15 @@ class Engine {
     }
   };
 
+
  // did player get bonus
  didPlayerEatBonus = () => {
   for (let i = 0; i < this.bonuses.length; i++) {
-    if (this.bonuses[i].x == this.player.x &&
+    if ((this.bonuses[i].x < this.player.x + PLAYER_WIDTH && this.bonuses[i].x + BONUS_WIDTH > this.player.x) &&
        (this.bonuses[i].y > GAME_HEIGHT - PLAYER_HEIGHT - BONUS_HEIGHT &&
-         this.bonuses[i].y < GAME_HEIGHT - (BONUS_HEIGHT/4))) {
-        
-      return true;
+         this.bonuses[i].y < GAME_HEIGHT - PLAYER_HEIGHT)) {
+       this.bonuses[i].wasEaten = true; 
+   return true;
     } 
   }
 };

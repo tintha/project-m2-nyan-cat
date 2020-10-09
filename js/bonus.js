@@ -29,6 +29,7 @@ class Bonus {
       // It is used in the Engine to determine whether or not an enemy is in a particular column.
       this.y = -BONUS_HEIGHT;
       this.destroyed = false;
+      this.wasEaten = false;
   
       // We create a new DOM element. The tag of this DOM element is img. It is the DOM node that will display the enemy image
       // to the user. When the enemy is no longer needed, we will use a reference to this DOM node to remove it from the game. This
