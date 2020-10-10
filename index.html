@@ -2,9 +2,20 @@
   <head>
     <meta charset="UTF-8"> 
     <title>Nyan Kat</title>
+    <style>
+      body {background-image: url("images/ocean2.jpg");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;}
+      .theapp { 
+      margin: 5px auto;
+      position: relative;
+      }
+      </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="theapp"></div>
     <script src="js/data.js"></script>
     <script src="js/Enemy.js"></script>
     <script src="js/bonus.js"></script>

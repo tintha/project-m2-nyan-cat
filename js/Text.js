@@ -10,8 +10,8 @@ class Text {
     div.style.position = 'absolute';
     div.style.left = xPos;
     div.style.top = yPos;
-    div.style.color = 'pink';
-    div.style.font = 'bold 30px Impact';
+    div.style.color = 'white';
+    div.style.font = 'bold 40px Impact';
     div.style.zIndex = 2000;
 
     root.appendChild(div);

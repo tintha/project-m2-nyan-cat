@@ -17,12 +17,13 @@ class Engine {
     // We add the background image to the game
     addBackground(this.root);
     // Add the score
-    this.score = new Text(this.root, GAME_WIDTH -100, 10);
+    this.score = new Text(this.root, GAME_WIDTH-420, GAME_HEIGHT + 8);
     this.startingScore = 0;
-    this.score.update(this.startingScore);
+    this.score.update(`SCORE: ${this.startingScore}`);
     // Add game instructions and status
-    this.gameStatus = new Text(this.root, (GAME_WIDTH/2-60), GAME_HEIGHT/2)
-
+    this.gameStatus = new Text(this.root, 150, GAME_HEIGHT/2)
+  
+    this.bonusAlert = new Text(this.root, 180, 340);
     this.bonuses = [];
   }
 
@@ -57,7 +58,7 @@ class Engine {
     // Remember: this.enemies only contains instances of the Enemy class.
     this.enemies = this.enemies.filter((enemy) => {
       if (enemy.destroyed) {
-        this.score.update(this.startingScore += 1);
+        this.score.update(`SCORE: ${this.startingScore += 1}`);
       }
       return !enemy.destroyed;     
     });
@@ -65,7 +66,7 @@ class Engine {
     //bonus
     this.bonuses = this.bonuses.filter((bonus) => {
       if (bonus.wasEaten && bonus.destroyed) {
-        this.score.update(this.startingScore += 100);
+        this.score.update(`SCORE: ${this.startingScore += 100}`);
       }
       return !bonus.destroyed;     
     });
@@ -90,9 +91,11 @@ class Engine {
 
 
     if (this.didPlayerEatBonus()) {
-      this.gameStatus.update("+100");
+      this.bonusAlert.update("+100");
+      //this.player.domElement.src = 'images/whitefish.png';
       const showBonus = setTimeout((() => {
-        this.gameStatus.update("");
+        this.bonusAlert.update("");
+       // this.player.domElement.src = 'images/yellowfish.png';
       }), 700);     
       
     }
@@ -101,6 +104,7 @@ class Engine {
     // and return from the method (Why is the return statement important?)
     if (this.isPlayerDead()) {
       this.gameStatus.update("Game Over");
+      //this.player.domElement.src = 'images/whitefish.png';
       return;
     }
 
@@ -113,7 +117,8 @@ class Engine {
   // the burger never dies. In your exercises you will fix this method.
   isPlayerDead = () => {
     for (let i = 0; i < this.enemies.length; i++) {
-      if (this.enemies[i].x == this.player.x && (this.enemies[i].y > GAME_HEIGHT - PLAYER_HEIGHT - ENEMY_HEIGHT && this.enemies[i].y < GAME_HEIGHT - (ENEMY_HEIGHT/2))) {
+      if (this.enemies[i].x == this.player.x && (this.enemies[i].y > GAME_HEIGHT - PLAYER_HEIGHT - ENEMY_HEIGHT && this.enemies[i].y < GAME_HEIGHT - ENEMY_HEIGHT)) {
+       // this.player.domElement.src = 'images/whitefish.png';
         document.removeEventListener('keydown', keydownHandler);
         return true;
       } 

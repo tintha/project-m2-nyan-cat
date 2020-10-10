@@ -47,7 +47,7 @@ const nextBonusSpot = (bonuses) => {
   // We then use forEach to iterate through all the enemies.
   // If you look at the constructor of the Enemy class, you can see that every instance will have a spot property.
   // We can use this property to modify the spotsTaken array.
-  const spotsTaken = [false, false, false, false, false];
+  const spotsTaken = [false, false, false, false, false, false, false];
   bonuses.forEach((bonus) => {
     spotsTaken[bonusSpots.spot] = true;
   });
@@ -76,9 +76,11 @@ const addBackground = (root) => {
   const bg = document.createElement('img');
 
   // We set its src attribute and the height and width CSS attributes
-  bg.src = 'images/stars.png';
+  bg.src = 'images/oceangame.jpg';
+  bg.style.opacity = '0.1';
   bg.style.height = `${GAME_HEIGHT}px`;
   bg.style.width = `${GAME_WIDTH}px`;
+  bg.style.border = `4px solid white`;
 
   // We add it to the root DOM node
   root.append(bg);
@@ -93,7 +95,10 @@ const addBackground = (root) => {
   whiteBox.style.position = 'absolute';
   whiteBox.style.top = `${GAME_HEIGHT}px`;
   whiteBox.style.height = `${ENEMY_HEIGHT}px`;
-  whiteBox.style.width = `${GAME_WIDTH}px`;
-  whiteBox.style.background = '#fff';
+  whiteBox.style.width = `${GAME_WIDTH+1}px`;
+  whiteBox.style.background = 'rgb(97, 179, 255)';
+  whiteBox.style.borderBottomLeftRadius = '6px';
+  whiteBox.style.borderBottomRightRadius = '6px';
+  whiteBox.style.border = '1px solid #e4e5ed';
   root.append(whiteBox);
 };

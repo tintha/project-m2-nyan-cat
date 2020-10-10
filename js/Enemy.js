@@ -36,11 +36,12 @@ class Enemy {
     this.domElement = document.createElement('img');
 
     // We give it a src attribute to specify which image to display.
-    this.domElement.src = './images/enemy.png';
+    this.domElement.src = './images/barrel.png';
     // We modify the CSS style of the DOM node.
     this.domElement.style.position = 'absolute';
     this.domElement.style.left = `${this.x}px`;
     this.domElement.style.top = `${this.y}px`;
+    this.domElement.style.filter = `drop-shadow(0 0 0.95rem white)`;
     this.domElement.style.zIndex = 5;
 
     // Show that the user can actually see the img DOM node, we append it to the root DOM node.
