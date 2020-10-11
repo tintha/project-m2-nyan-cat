@@ -19,6 +19,9 @@ const keydownHandler = (event) => {
     gameEngine.player.moveRight();
   }
 
+  if (event.code === 'Enter') {
+   gameEngine.gameLoop(); 
+ }
 
 };
 
@@ -26,4 +29,4 @@ const keydownHandler = (event) => {
 document.addEventListener('keydown', keydownHandler);
 
 // We call the gameLoop method to start the game
-gameEngine.gameLoop();
+//gameEngine.gameLoop(); 

@@ -11,7 +11,8 @@ class Text {
     div.style.left = xPos;
     div.style.top = yPos;
     div.style.color = 'white';
-    div.style.font = 'bold 40px Impact';
+    // font-family: 'Coiny', cursive;
+    div.style.font = 'bold 25px Coiny';
     div.style.zIndex = 2000;
 
     root.appendChild(div);
@@ -23,4 +24,25 @@ class Text {
   update(txt) {
     this.domElement.innerText = txt;
   }
+
+  // change the opacity
+  changeOpacity(opacityValue) {
+    this.domElement.style.opacity = opacityValue;
+  }
+
+  // change font size
+  changeSize(sizeValue) {
+    this.domElement.style.fontSize = `${sizeValue}px`;
+  }
+
+  changeColor(color) {
+    this.domElement.style.color = `${color}`;
+  }
+
+  addIcon(iconUrl, width, height) {
+    this.domElement.style.background = `url(${iconUrl}) no-repeat`;
+    this.domElement.style.minHeight = `${width}px`;
+    this.domElement.style.minWidth = `${width}px`;
+  }
+
 }

@@ -1,28 +1,35 @@
 <html>
   <head>
     <meta charset="UTF-8"> 
-    <title>Nyan Kat</title>
-    <style>
-      body {background-image: url("images/ocean2.jpg");
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;}
-      .theapp { 
-      margin: 5px auto;
-      position: relative;
-      }
-      </style>
+    <title>Mad pirates</title>
+    <link rel="stylesheet" href="./css/reset.css">
+      <link rel="stylesheet" href="./css/style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="app" class="theapp"></div>
+    <div class='wrapper'>
+      <div class="container">
+        <div class="info">
+          <h1>Oh, no!</h1>
+          <p>Some mad pirates <img src="images/pirate-patchmini.png" alt="pirate"> have decided to throw a bunch of barrels down the ocean!</p>
+          <p>Use the <span class="key"><- left</span> and <span class="key">right -></span> arrow keys to help the fish dodge the barrels.</p>
+          <p>Grab the worms for 100 BONUS POINTS!</p>
+          <p>Press <span class="key">Enter</span> to start the game now!</p>
+          <p>Good luck!</p>
+        </div>
+        <div class="game-wrapper">
+          <div id="app" class="theapp"></div>
+        </div>
+      </div>
+    </div>
     <script src="js/data.js"></script>
     <script src="js/Enemy.js"></script>
-    <script src="js/bonus.js"></script>
+    <script src="js/Bonus.js"></script>
     <script src="js/engine-utilities.js"></script>
     <script src="js/Engine.js"></script>
     <script src="js/Player.js"></script>
     <script src="js/Text.js"></script>
+    <script src="js/Sound.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,61 @@
+body {background-image: url("../images/ocean2.jpg");
+    background-size: cover;
+    font-family: 'Coiny', cursive;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+
+.wrapper {
+    display: flex;
+}
+
+.theapp { 
+    margin: 5px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-wrapper {
+    border: 1px solid white;
+    padding: 5px 6px 10px 6px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    height: 540px;
+    border-radius: 20px;
+    margin-top: 2px;
+
+}
+.info h1 {
+    font-size: 40px;
+}
+
+.info {
+    padding: 20px;
+    background-color: rgb(131, 78, 124);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 400px;
+    opacity: 0.9;
+}
+
+.info p {
+    padding-top: 20px;
+    line-height: 30px;
+}
+
+
+.key {
+    color: rgb(131, 78, 124);
+    background-color: white;
+    border-radius: 3px;
+    padding: 6px;
+}
